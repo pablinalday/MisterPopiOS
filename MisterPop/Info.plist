@@ -26,6 +26,8 @@
 	<array>
 		<string>audio</string>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>image1</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

@@ -25,6 +25,8 @@
     [backgroundIV setAnimationRepeatCount:0];
     [backgroundIV startAnimating];
     
+    [[self navigationController] setNavigationBarHidden:TRUE];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,10 +41,7 @@
     for (NSInteger index = 1; index <= 4; index++)
     {
         NSString *imageName = [NSString stringWithFormat:@"image%ld.jpeg", (long)index];
-        
-        NSString *path = [[NSBundle mainBundle] pathForResource:imageName
-                                                         ofType:nil];
-        
+    
         // Allocating images with imageWithContentsOfFile makes images to do not cache.
         UIImage *image = [UIImage imageNamed:imageName];
         
