@@ -8,6 +8,10 @@
 
 #import "PlayerVC.h"
 
+#import <QuartzCore/CoreAnimation.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import <CFNetwork/CFNetwork.h>
+
 @interface PlayerVC ()
 
 @end
@@ -15,6 +19,7 @@
 @implementation PlayerVC
 
 @synthesize backgroundIV;
+@synthesize streamer;
 
 - (void)viewDidLoad
 {
@@ -27,7 +32,43 @@
     
     [[self navigationController] setNavigationBarHidden:TRUE];
     
+    
+    MPRemoteCommandCenter *rcc = [MPRemoteCommandCenter sharedCommandCenter];
+    
+    MPRemoteCommand *pauseCommand = [rcc stopCommand];
+    [pauseCommand setEnabled:YES];
+    [pauseCommand addTarget:self action:@selector(createStreamer)];
+    //
+    MPRemoteCommand *playCommand = [rcc playCommand];
+    [playCommand setEnabled:YES];
+    [playCommand addTarget:self action:@selector(createStreamer)];
 }
+
+- (void)createStreamer
+{
+
+    if (streamer)
+    {
+        return;
+    }
+    
+    
+    NSString *escapedValue =
+    [(NSString *)CFURLCreateStringByAddingPercentEscapes(
+                                                         nil,
+                                                         (CFStringRef)@"http://cdn.instream.audio:8150/",
+                                                         NULL,
+                                                         NULL,
+                                                         kCFStringEncodingUTF8)
+     autorelease];
+    
+    NSURL *url = [NSURL URLWithString:escapedValue];
+    streamer = [[AudioStreamer alloc] initWithURL:url];
+    
+    [streamer start];
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {

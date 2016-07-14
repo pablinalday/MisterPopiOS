@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AudioStreamer.h"
 
 @interface PlayerVC : UIViewController
 
 @property (nonatomic, retain) IBOutlet UIImageView * backgroundIV;
+@property (nonatomic, retain) AudioStreamer *streamer;
+
 
 @end
