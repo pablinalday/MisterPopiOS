@@ -8,9 +8,7 @@
 
 #import "PlayerVC.h"
 
-#import <QuartzCore/CoreAnimation.h>
-#import <MediaPlayer/MediaPlayer.h>
-#import <CFNetwork/CFNetwork.h>
+
 
 @interface PlayerVC ()
 
@@ -20,6 +18,9 @@
 
 @synthesize backgroundIV;
 @synthesize streamer;
+@synthesize playbackStatusLbl;
+@synthesize playbackBtn;
+@synthesize rcc;
 
 - (void)viewDidLoad
 {
@@ -32,49 +33,109 @@
     
     [[self navigationController] setNavigationBarHidden:TRUE];
     
+    [playbackBtn addTarget:self action:@selector(playStreamer) forControlEvents:UIControlEventTouchUpInside];
     
-    MPRemoteCommandCenter *rcc = [MPRemoteCommandCenter sharedCommandCenter];
+    [self createStreamer];
     
-    MPRemoteCommand *pauseCommand = [rcc stopCommand];
-    [pauseCommand setEnabled:YES];
-    [pauseCommand addTarget:self action:@selector(createStreamer)];
-    //
+    rcc = [MPRemoteCommandCenter sharedCommandCenter];
+    
     MPRemoteCommand *playCommand = [rcc playCommand];
     [playCommand setEnabled:YES];
-    [playCommand addTarget:self action:@selector(createStreamer)];
+    [playCommand addTarget:self action:@selector(playStreamer)];
+    
+    MPRemoteCommand *pauseCommand = [rcc pauseCommand];
+    [pauseCommand setEnabled:YES];
+    [pauseCommand addTarget:self action:@selector(stopStreamer)];
+    
+    MPRemoteCommand *ffCommand = [rcc seekForwardCommand];
+    [ffCommand setEnabled:NO];
+
+    MPRemoteCommand *rwCommand = [rcc seekBackwardCommand];
+    [rwCommand setEnabled:NO];
 }
 
-- (void)createStreamer
+- (void) createStreamer
 {
-
     if (streamer)
     {
-        return;
+        [streamer stop];
+        [streamer release];
+        streamer = nil;
     }
     
-    
-    NSString *escapedValue =
-    [(NSString *)CFURLCreateStringByAddingPercentEscapes(
+    NSString *escapedValue = [(NSString *)CFURLCreateStringByAddingPercentEscapes(
                                                          nil,
                                                          (CFStringRef)@"http://cdn.instream.audio:8150/",
                                                          NULL,
                                                          NULL,
                                                          kCFStringEncodingUTF8)
-     autorelease];
+                              autorelease];
     
     NSURL *url = [NSURL URLWithString:escapedValue];
     streamer = [[AudioStreamer alloc] initWithURL:url];
     
-    [streamer start];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackStateChanged:) name:ASStatusChangedNotification object:streamer];
 }
 
+- (void)playbackStateChanged:(NSNotification *)aNotification
+{
+    if ([streamer isWaiting])
+    {
+        [playbackStatusLbl setText:@"BUFFERING ..."];
+    }
+    else if ([streamer isPlaying])
+    {
+        [playbackStatusLbl setText:@"LIVE"];
+    }
+    else if ([streamer isPaused])
+    {
+        [playbackStatusLbl setText:@"PAUSED"];
+    }
+    else if ([streamer isIdle])
+    {
+        [self destroyStreamer];
+        [playbackStatusLbl setText:@"STOPPED"];
+    }
+}
+
+- (void)destroyStreamer
+{
+    if (streamer)
+    {
+        [[NSNotificationCenter defaultCenter]
+         removeObserver:self
+         name:ASStatusChangedNotification
+         object:streamer];
+        
+        [streamer stop];
+        RELEASE_SAFE(streamer);
+    }
+}
+
+- (void) playStreamer
+{
+    if(!streamer)
+    {
+        [self createStreamer];
+    }
+    [streamer start];
+    [playbackBtn addTarget:self action:@selector(stopStreamer) forControlEvents:UIControlEventTouchUpInside];
+    [playbackBtn setBackgroundImage:[UIImage imageNamed:@"pause_btn"] forState:UIControlStateNormal];
+    [rcc togglePlayPauseCommand];
+}
+
+- (void) stopStreamer
+{
+    [streamer stop];
+    [playbackBtn addTarget:self action:@selector(playStreamer) forControlEvents:UIControlEventTouchUpInside];
+    [playbackBtn setBackgroundImage:[UIImage imageNamed:@"play_btn"] forState:UIControlStateNormal];
+    [rcc togglePlayPauseCommand];
+}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
-
 
 - (NSArray *)createImagesArray
 {
@@ -83,13 +144,18 @@
     {
         NSString *imageName = [NSString stringWithFormat:@"image%ld.jpeg", (long)index];
     
-        // Allocating images with imageWithContentsOfFile makes images to do not cache.
         UIImage *image = [UIImage imageNamed:imageName];
         
         [array addObject:image];
     }
     
     return array;
+}
+
+- (void)dealloc
+{
+    [self destroyStreamer];
+    [super dealloc];
 }
 
 @end

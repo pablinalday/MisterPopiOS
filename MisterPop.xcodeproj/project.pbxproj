@@ -17,6 +17,8 @@
 		6E05C0851D3735B80062D0E5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E05C0841D3735B80062D0E5 /* AudioToolbox.framework */; };
 		6E05C0871D3735C20062D0E5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E05C0861D3735C20062D0E5 /* MediaPlayer.framework */; };
 		6E05C08B1D3736620062D0E5 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05C08A1D3736620062D0E5 /* AudioStreamer.m */; };
+		6E18ED6F1D3EE70400459BC2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E18ED6D1D3EE70400459BC2 /* Fabric.framework */; };
+		6E18ED701D3EE70400459BC2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E18ED6E1D3EE70400459BC2 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		6E05C0861D3735C20062D0E5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		6E05C0891D3736620062D0E5 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		6E05C08A1D3736620062D0E5 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
+		6E18ED6D1D3EE70400459BC2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		6E18ED6E1D3EE70400459BC2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,8 +49,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E05C0871D3735C20062D0E5 /* MediaPlayer.framework in Frameworks */,
+				6E18ED6F1D3EE70400459BC2 /* Fabric.framework in Frameworks */,
 				6E05C0851D3735B80062D0E5 /* AudioToolbox.framework in Frameworks */,
 				6E05C0831D3735AF0062D0E5 /* QuartzCore.framework in Frameworks */,
+				6E18ED701D3EE70400459BC2 /* Crashlytics.framework in Frameworks */,
 				6E05C0811D3735A50062D0E5 /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,6 +123,8 @@
 		6E05C0881D3735D60062D0E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E18ED6D1D3EE70400459BC2 /* Fabric.framework */,
+				6E18ED6E1D3EE70400459BC2 /* Crashlytics.framework */,
 				6E05C0861D3735C20062D0E5 /* MediaPlayer.framework */,
 				6E05C0841D3735B80062D0E5 /* AudioToolbox.framework */,
 				6E05C0821D3735AF0062D0E5 /* QuartzCore.framework */,
@@ -135,6 +143,7 @@
 				6E05C0581D372E6F0062D0E5 /* Sources */,
 				6E05C0591D372E6F0062D0E5 /* Frameworks */,
 				6E05C05A1D372E6F0062D0E5 /* Resources */,
+				6E18ED6C1D3EE6B800459BC2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -156,6 +165,7 @@
 				TargetAttributes = {
 					6E05C05B1D372E6F0062D0E5 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = G9G85M8U9S;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -194,6 +204,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6E18ED6C1D3EE6B800459BC2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 6619f70057bc04eac9c53187f5ae7c87c50443d0 9300b76cb2a36c606d750bb0d2b86017f234843940bb8f61f63d58937a28bed8";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6E05C0581D372E6F0062D0E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -227,7 +253,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Emanuel Ferreyra (G9G85M8U9S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Emanuel Ferreyra (G9G85M8U9S)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -271,7 +298,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Emanuel Ferreyra (G9G85M8U9S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Emanuel Ferreyra (G9G85M8U9S)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -295,6 +323,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Emanuel Ferreyra (G9G85M8U9S)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MisterPop-Prefix.pch";
 				INFOPLIST_FILE = MisterPop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -307,6 +340,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Emanuel Ferreyra (G9G85M8U9S)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MisterPop-Prefix.pch";
 				INFOPLIST_FILE = MisterPop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -334,6 +372,7 @@
 				6E05C0751D372E6F0062D0E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

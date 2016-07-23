@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "PlayerVC.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 @interface AppDelegate ()
 
@@ -19,6 +22,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [Fabric with:@[[Crashlytics class]]];
+
     window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     PlayerVC * splashVC = [[PlayerVC alloc] init];

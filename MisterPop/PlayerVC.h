@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "AudioStreamer.h"
+#import <QuartzCore/CoreAnimation.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import <CFNetwork/CFNetwork.h>
 
 @interface PlayerVC : UIViewController
 
 @property (nonatomic, retain) IBOutlet UIImageView * backgroundIV;
+@property (nonatomic, retain) IBOutlet UIButton * playbackBtn;
+@property (nonatomic, retain) IBOutlet UILabel * playbackStatusLbl;
 @property (nonatomic, retain) AudioStreamer *streamer;
-
+@property (nonatomic, retain) MPRemoteCommandCenter *rcc;
 
 @end

@@ -8,6 +8,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerVC">
             <connections>
                 <outlet property="backgroundIV" destination="kC1-l1-rTF" id="5hW-Ut-LqY"/>
+                <outlet property="playbackBtn" destination="wyo-Ax-W6g" id="3dd-fO-j9L"/>
+                <outlet property="playbackStatusLbl" destination="Rvd-vH-xvB" id="W7S-v6-RR7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,13 +18,40 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kC1-l1-rTF">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kC1-l1-rTF">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="414" id="LNJ-m4-dMk"/>
+                        <constraint firstAttribute="height" constant="736" id="ME7-57-dNO"/>
+                    </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rvd-vH-xvB">
+                    <rect key="frame" x="16" y="707" width="231" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="21"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyo-Ax-W6g">
+                    <rect key="frame" x="143" y="304" width="128" height="128"/>
+                    <state key="normal" backgroundImage="play_btn"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="kC1-l1-rTF" secondAttribute="trailing" id="1an-6r-clX"/>
+                <constraint firstAttribute="bottom" secondItem="kC1-l1-rTF" secondAttribute="bottom" id="5Eo-eI-ZZX"/>
+                <constraint firstItem="wyo-Ax-W6g" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ubv-z4-GtP"/>
+                <constraint firstItem="kC1-l1-rTF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nR4-sW-KaO"/>
+                <constraint firstItem="kC1-l1-rTF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="opl-cV-4Yr"/>
+                <constraint firstAttribute="bottom" secondItem="Rvd-vH-xvB" secondAttribute="bottom" constant="8" id="pgL-Gb-thr"/>
+                <constraint firstItem="Rvd-vH-xvB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="rpS-UV-eQi"/>
+                <constraint firstItem="wyo-Ax-W6g" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="t1j-dC-EyY"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
             <point key="canvasLocation" x="277" y="85"/>
         </view>
     </objects>
+    <resources>
+        <image name="play_btn" width="256" height="256"/>
+    </resources>
 </document>
