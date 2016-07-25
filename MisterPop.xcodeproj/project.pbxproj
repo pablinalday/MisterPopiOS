@@ -19,6 +19,8 @@
 		6E05C08B1D3736620062D0E5 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05C08A1D3736620062D0E5 /* AudioStreamer.m */; };
 		6E18ED6F1D3EE70400459BC2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E18ED6D1D3EE70400459BC2 /* Fabric.framework */; };
 		6E18ED701D3EE70400459BC2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E18ED6E1D3EE70400459BC2 /* Crashlytics.framework */; };
+		6E6F8C551D46609C0021C4A8 /* ScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F8C531D46609C0021C4A8 /* ScheduleTableViewCell.m */; };
+		6E6F8C561D46609C0021C4A8 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E6F8C541D46609C0021C4A8 /* ScheduleTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,9 @@
 		6E05C08A1D3736620062D0E5 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		6E18ED6D1D3EE70400459BC2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		6E18ED6E1D3EE70400459BC2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		6E6F8C521D46609C0021C4A8 /* ScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTableViewCell.h; sourceTree = "<group>"; };
+		6E6F8C531D46609C0021C4A8 /* ScheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTableViewCell.m; sourceTree = "<group>"; };
+		6E6F8C541D46609C0021C4A8 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +121,9 @@
 				6E05C0761D372F900062D0E5 /* PlayerVC.h */,
 				6E05C0771D372F900062D0E5 /* PlayerVC.m */,
 				6E05C0781D372F900062D0E5 /* PlayerVC.xib */,
+				6E6F8C521D46609C0021C4A8 /* ScheduleTableViewCell.h */,
+				6E6F8C531D46609C0021C4A8 /* ScheduleTableViewCell.m */,
+				6E6F8C541D46609C0021C4A8 /* ScheduleTableViewCell.xib */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -198,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E05C06C1D372E6F0062D0E5 /* Assets.xcassets in Resources */,
+				6E6F8C561D46609C0021C4A8 /* ScheduleTableViewCell.xib in Resources */,
 				6E05C07A1D372F900062D0E5 /* PlayerVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,6 +236,7 @@
 			files = (
 				6E05C0641D372E6F0062D0E5 /* AppDelegate.m in Sources */,
 				6E05C0611D372E6F0062D0E5 /* main.m in Sources */,
+				6E6F8C551D46609C0021C4A8 /* ScheduleTableViewCell.m in Sources */,
 				6E05C0791D372F900062D0E5 /* PlayerVC.m in Sources */,
 				6E05C08B1D3736620062D0E5 /* AudioStreamer.m in Sources */,
 			);

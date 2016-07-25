@@ -7,6 +7,7 @@
 //
 
 #import "PlayerVC.h"
+#import "ScheduleTableViewCell.h"
 
 
 
@@ -21,6 +22,9 @@
 @synthesize playbackStatusLbl;
 @synthesize playbackBtn;
 @synthesize rcc;
+@synthesize scheduleView;
+@synthesize scheduleButton;
+@synthesize closeButton;
 
 - (void)viewDidLoad
 {
@@ -52,10 +56,33 @@
 
     MPRemoteCommand *rwCommand = [rcc seekBackwardCommand];
     [rwCommand setEnabled:NO];
+    
+    [playbackStatusLbl setText:@"STOPPED"];
+    
+    [scheduleButton addTarget:self action:@selector(showSchedule) forControlEvents:UIControlEventTouchUpInside];
+    
+    [closeButton addTarget:self action:@selector(hideSchedule) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void) showSchedule
+{
+    [UIView transitionWithView:scheduleView duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        [scheduleView setHidden:FALSE];
+    }  completion:nil];
+}
+
+
+- (void) hideSchedule
+{
+    [UIView transitionWithView:scheduleView duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        [scheduleView setHidden:TRUE];
+    }  completion:nil];
 }
 
 - (void) createStreamer
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackStateChanged:) name:ASStatusChangedNotification object:streamer];
+    
     if (streamer)
     {
         [streamer stop];
@@ -73,8 +100,6 @@
     
     NSURL *url = [NSURL URLWithString:escapedValue];
     streamer = [[AudioStreamer alloc] initWithURL:url];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackStateChanged:) name:ASStatusChangedNotification object:streamer];
 }
 
 - (void)playbackStateChanged:(NSNotification *)aNotification
@@ -85,7 +110,7 @@
     }
     else if ([streamer isPlaying])
     {
-        [playbackStatusLbl setText:@"LIVE"];
+        [playbackStatusLbl setText:@"PLAYING"];
     }
     else if ([streamer isPaused])
     {
@@ -151,6 +176,41 @@
     
     return array;
 }
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    ScheduleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableViewCell"];
+    
+    if (cell == nil)
+    {
+        cell = [[ScheduleTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"ScheduleTableViewCell"];
+    }
+    
+    //[cell updateCell:[parkingArray objectAtIndex:[indexPath row]]];
+    
+    return cell;
+}
+
+//------------------------------------------------------------------------------
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60.0;
+}
+
+//------------------------------------------------------------------------------
+
 
 - (void)dealloc
 {
