@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
     
-    [backgroundIV setAnimationImages:[self createImagesArray]];
+    [backgroundIV setAnimationImages:[[Controller getInstance] imagesArray]];
     [backgroundIV setAnimationDuration:5];
     [backgroundIV setAnimationRepeatCount:0];
     [backgroundIV startAnimating];
@@ -188,7 +188,7 @@
         cell = [[ScheduleTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"ScheduleTableViewCell"];
     }
     
-    //[cell updateCell:[parkingArray objectAtIndex:[indexPath row]]];
+    [cell updateCell:[[[Controller getInstance] schedule] objectAtIndex:[indexPath row]]];
     
     return cell;
 }
@@ -197,7 +197,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return [[[Controller getInstance] schedule] count];
 }
 
 //------------------------------------------------------------------------------

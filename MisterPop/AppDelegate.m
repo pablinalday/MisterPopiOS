@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PlayerVC.h"
+#import "SplashVC.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
@@ -26,7 +27,7 @@
 
     window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    PlayerVC * splashVC = [[PlayerVC alloc] init];
+    SplashVC * splashVC = [[SplashVC alloc] init];
     
     navigationController = [[UINavigationController alloc] initWithRootViewController:splashVC];
     

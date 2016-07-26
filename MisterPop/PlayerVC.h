@@ -11,6 +11,7 @@
 #import <QuartzCore/CoreAnimation.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <CFNetwork/CFNetwork.h>
+#import "Controller.h"
 
 @interface PlayerVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RadioShow.h"
 
 @interface ScheduleTableViewCell : UITableViewCell
+
+@property (nonatomic, retain) IBOutlet UILabel * name;
+@property (nonatomic, retain) IBOutlet UILabel * days;
+@property (nonatomic, retain) IBOutlet UILabel * time;
+@property (nonatomic, retain) IBOutlet UILabel * start;
+
+- (void) updateCell:(RadioShow*) show;
 
 @end

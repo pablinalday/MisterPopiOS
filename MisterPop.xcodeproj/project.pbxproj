@@ -21,6 +21,10 @@
 		6E18ED701D3EE70400459BC2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E18ED6E1D3EE70400459BC2 /* Crashlytics.framework */; };
 		6E6F8C551D46609C0021C4A8 /* ScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F8C531D46609C0021C4A8 /* ScheduleTableViewCell.m */; };
 		6E6F8C561D46609C0021C4A8 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E6F8C541D46609C0021C4A8 /* ScheduleTableViewCell.xib */; };
+		6E6F8C5A1D47DBA60021C4A8 /* SplashVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F8C581D47DBA60021C4A8 /* SplashVC.m */; };
+		6E6F8C5B1D47DBA60021C4A8 /* SplashVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E6F8C591D47DBA60021C4A8 /* SplashVC.xib */; };
+		6E6F8C5F1D47DD6B0021C4A8 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F8C5E1D47DD6B0021C4A8 /* Controller.m */; };
+		6E6F8C631D47E1220021C4A8 /* RadioShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F8C621D47E1220021C4A8 /* RadioShow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,13 @@
 		6E6F8C521D46609C0021C4A8 /* ScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTableViewCell.h; sourceTree = "<group>"; };
 		6E6F8C531D46609C0021C4A8 /* ScheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTableViewCell.m; sourceTree = "<group>"; };
 		6E6F8C541D46609C0021C4A8 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
+		6E6F8C571D47DBA60021C4A8 /* SplashVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashVC.h; sourceTree = "<group>"; };
+		6E6F8C581D47DBA60021C4A8 /* SplashVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashVC.m; sourceTree = "<group>"; };
+		6E6F8C591D47DBA60021C4A8 /* SplashVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashVC.xib; sourceTree = "<group>"; };
+		6E6F8C5D1D47DD6B0021C4A8 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		6E6F8C5E1D47DD6B0021C4A8 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
+		6E6F8C611D47E1220021C4A8 /* RadioShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioShow.h; sourceTree = "<group>"; };
+		6E6F8C621D47E1220021C4A8 /* RadioShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioShow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +95,10 @@
 		6E05C05E1D372E6F0062D0E5 /* MisterPop */ = {
 			isa = PBXGroup;
 			children = (
+				6E6F8C601D47E0ED0021C4A8 /* model */,
+				6E6F8C5C1D47DD510021C4A8 /* controller */,
 				6E05C07C1D3730200062D0E5 /* util */,
-				6E05C07D1D37302B0062D0E5 /* Player */,
+				6E05C07D1D37302B0062D0E5 /* player */,
 				6E05C0621D372E6F0062D0E5 /* AppDelegate.h */,
 				6E05C0631D372E6F0062D0E5 /* AppDelegate.m */,
 				6E05C06B1D372E6F0062D0E5 /* Assets.xcassets */,
@@ -115,7 +128,7 @@
 			name = util;
 			sourceTree = "<group>";
 		};
-		6E05C07D1D37302B0062D0E5 /* Player */ = {
+		6E05C07D1D37302B0062D0E5 /* player */ = {
 			isa = PBXGroup;
 			children = (
 				6E05C0761D372F900062D0E5 /* PlayerVC.h */,
@@ -124,8 +137,11 @@
 				6E6F8C521D46609C0021C4A8 /* ScheduleTableViewCell.h */,
 				6E6F8C531D46609C0021C4A8 /* ScheduleTableViewCell.m */,
 				6E6F8C541D46609C0021C4A8 /* ScheduleTableViewCell.xib */,
+				6E6F8C571D47DBA60021C4A8 /* SplashVC.h */,
+				6E6F8C581D47DBA60021C4A8 /* SplashVC.m */,
+				6E6F8C591D47DBA60021C4A8 /* SplashVC.xib */,
 			);
-			name = Player;
+			name = player;
 			sourceTree = "<group>";
 		};
 		6E05C0881D3735D60062D0E5 /* Frameworks */ = {
@@ -139,6 +155,24 @@
 				6E05C0801D3735A50062D0E5 /* CFNetwork.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6E6F8C5C1D47DD510021C4A8 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6E6F8C5D1D47DD6B0021C4A8 /* Controller.h */,
+				6E6F8C5E1D47DD6B0021C4A8 /* Controller.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		6E6F8C601D47E0ED0021C4A8 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				6E6F8C611D47E1220021C4A8 /* RadioShow.h */,
+				6E6F8C621D47E1220021C4A8 /* RadioShow.m */,
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E05C06C1D372E6F0062D0E5 /* Assets.xcassets in Resources */,
+				6E6F8C5B1D47DBA60021C4A8 /* SplashVC.xib in Resources */,
 				6E6F8C561D46609C0021C4A8 /* ScheduleTableViewCell.xib in Resources */,
 				6E05C07A1D372F900062D0E5 /* PlayerVC.xib in Resources */,
 			);
@@ -235,9 +270,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E05C0641D372E6F0062D0E5 /* AppDelegate.m in Sources */,
+				6E6F8C5A1D47DBA60021C4A8 /* SplashVC.m in Sources */,
 				6E05C0611D372E6F0062D0E5 /* main.m in Sources */,
 				6E6F8C551D46609C0021C4A8 /* ScheduleTableViewCell.m in Sources */,
 				6E05C0791D372F900062D0E5 /* PlayerVC.m in Sources */,
+				6E6F8C5F1D47DD6B0021C4A8 /* Controller.m in Sources */,
+				6E6F8C631D47E1220021C4A8 /* RadioShow.m in Sources */,
 				6E05C08B1D3736620062D0E5 /* AudioStreamer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

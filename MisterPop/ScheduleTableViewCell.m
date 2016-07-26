@@ -10,6 +10,11 @@
 
 @implementation ScheduleTableViewCell
 
+@synthesize name;
+@synthesize days;
+@synthesize time;
+@synthesize start;
+
 //------------------------------------------------------------------------------
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -36,6 +41,14 @@
     }
     
     return self;
+}
+
+- (void) updateCell:(RadioShow*) show
+{
+    [name setText:[show name]];
+    [days setText:[show days]];
+    [time setText:[show time]];
+    
 }
 
 
