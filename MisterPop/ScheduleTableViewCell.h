@@ -16,6 +16,6 @@
 @property (nonatomic, retain) IBOutlet UILabel * time;
 @property (nonatomic, retain) IBOutlet UILabel * start;
 
-- (void) updateCell:(RadioShow*) show;
+- (void) updateCell:(RadioShow*) show isCurrent:(Boolean) isCurrent;
 
 @end

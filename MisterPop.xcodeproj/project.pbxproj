@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6E05C0611D372E6F0062D0E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05C0601D372E6F0062D0E5 /* main.m */; };
 		6E05C0641D372E6F0062D0E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05C0631D372E6F0062D0E5 /* AppDelegate.m */; };
-		6E05C06C1D372E6F0062D0E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E05C06B1D372E6F0062D0E5 /* Assets.xcassets */; };
 		6E05C0791D372F900062D0E5 /* PlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05C0771D372F900062D0E5 /* PlayerVC.m */; };
 		6E05C07A1D372F900062D0E5 /* PlayerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E05C0781D372F900062D0E5 /* PlayerVC.xib */; };
 		6E05C0811D3735A50062D0E5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E05C0801D3735A50062D0E5 /* CFNetwork.framework */; };
@@ -25,6 +24,7 @@
 		6E6F8C5B1D47DBA60021C4A8 /* SplashVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E6F8C591D47DBA60021C4A8 /* SplashVC.xib */; };
 		6E6F8C5F1D47DD6B0021C4A8 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F8C5E1D47DD6B0021C4A8 /* Controller.m */; };
 		6E6F8C631D47E1220021C4A8 /* RadioShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F8C621D47E1220021C4A8 /* RadioShow.m */; };
+		6EF1EBDC1D49256F002A4524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EF1EBDB1D49256F002A4524 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,6 @@
 		6E05C0601D372E6F0062D0E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6E05C0621D372E6F0062D0E5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6E05C0631D372E6F0062D0E5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6E05C06B1D372E6F0062D0E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E05C0701D372E6F0062D0E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E05C0761D372F900062D0E5 /* PlayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerVC.h; sourceTree = "<group>"; };
 		6E05C0771D372F900062D0E5 /* PlayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerVC.m; sourceTree = "<group>"; };
@@ -57,6 +56,7 @@
 		6E6F8C5E1D47DD6B0021C4A8 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
 		6E6F8C611D47E1220021C4A8 /* RadioShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioShow.h; sourceTree = "<group>"; };
 		6E6F8C621D47E1220021C4A8 /* RadioShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioShow.m; sourceTree = "<group>"; };
+		6EF1EBDB1D49256F002A4524 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +101,7 @@
 				6E05C07D1D37302B0062D0E5 /* player */,
 				6E05C0621D372E6F0062D0E5 /* AppDelegate.h */,
 				6E05C0631D372E6F0062D0E5 /* AppDelegate.m */,
-				6E05C06B1D372E6F0062D0E5 /* Assets.xcassets */,
+				6EF1EBDB1D49256F002A4524 /* Assets.xcassets */,
 				6E05C05F1D372E6F0062D0E5 /* Supporting Files */,
 				6E05C0881D3735D60062D0E5 /* Frameworks */,
 			);
@@ -239,9 +239,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E05C06C1D372E6F0062D0E5 /* Assets.xcassets in Resources */,
 				6E6F8C5B1D47DBA60021C4A8 /* SplashVC.xib in Resources */,
 				6E6F8C561D46609C0021C4A8 /* ScheduleTableViewCell.xib in Resources */,
+				6EF1EBDC1D49256F002A4524 /* Assets.xcassets in Resources */,
 				6E05C07A1D372F900062D0E5 /* PlayerVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -43,13 +43,30 @@
     return self;
 }
 
-- (void) updateCell:(RadioShow*) show
+- (void) updateCell:(RadioShow*) show isCurrent:(Boolean) isCurrent
 {
-    [name setText:[show name]];
+    UIColor *normalColor = [UIColor whiteColor];
+    UIColor *liveColor = [UIColor redColor];
+    UIFont *font = [UIFont systemFontOfSize:10 weight:10];
+    NSDictionary *normalAttributes = @{ NSForegroundColorAttributeName:normalColor};
+    NSDictionary *liveAttributes = @{NSFontAttributeName:font, NSForegroundColorAttributeName:liveColor};
+    
+    NSAttributedString *normalText = [[NSAttributedString alloc] initWithString:[show name] attributes:normalAttributes];
+   
+    NSMutableAttributedString *finalAttributedString = [[NSMutableAttributedString alloc] initWithAttributedString:normalText];
+    
+    if(isCurrent)
+    {
+         NSAttributedString *highlightedText = [[NSAttributedString alloc] initWithString:@"  LIVE" attributes:liveAttributes];
+        [finalAttributedString appendAttributedString:highlightedText];
+        
+        [start setTextColor:liveColor];
+    }
+    [name setAttributedText:finalAttributedString];
+    
     [days setText:[show days]];
     [time setText:[show time]];
-    
+    [start setText:[NSString stringWithFormat:@"%d:00", [show start]]];
 }
-
 
 @end

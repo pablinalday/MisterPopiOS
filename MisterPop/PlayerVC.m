@@ -25,6 +25,9 @@
 @synthesize scheduleView;
 @synthesize scheduleButton;
 @synthesize closeButton;
+@synthesize scheduleMaskView;
+@synthesize currentShow;
+@synthesize scheduleTV;
 
 - (void)viewDidLoad
 {
@@ -62,20 +65,27 @@
     [scheduleButton addTarget:self action:@selector(showSchedule) forControlEvents:UIControlEventTouchUpInside];
     
     [closeButton addTarget:self action:@selector(hideSchedule) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self updateCurrentShow];
 }
 
 - (void) showSchedule
 {
+    [self updateCurrentShow];
+    [scheduleTV reloadData];
     [UIView transitionWithView:scheduleView duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         [scheduleView setHidden:FALSE];
+        [scheduleMaskView setHidden:FALSE];
     }  completion:nil];
 }
 
 
 - (void) hideSchedule
 {
+    [self updateCurrentShow];
     [UIView transitionWithView:scheduleView duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         [scheduleView setHidden:TRUE];
+        [scheduleMaskView setHidden:TRUE];
     }  completion:nil];
 }
 
@@ -111,6 +121,7 @@
     else if ([streamer isPlaying])
     {
         [playbackStatusLbl setText:@"PLAYING"];
+        [self updateCurrentShow];
     }
     else if ([streamer isPaused])
     {
@@ -120,6 +131,7 @@
     {
         [self destroyStreamer];
         [playbackStatusLbl setText:@"STOPPED"];
+        [self updateCurrentShow];
     }
 }
 
@@ -157,6 +169,13 @@
     [rcc togglePlayPauseCommand];
 }
 
+- (void) updateCurrentShow
+{
+    [[Controller getInstance] updateCurrentRadioShow];
+    [currentShow setText:[NSString stringWithFormat:@"%@\nho", [[[Controller getInstance] currentShow] name]]];
+    [currentShow sizeToFit];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -180,7 +199,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    RadioShow * show = [[[Controller getInstance] schedule] objectAtIndex:[indexPath row]];
     ScheduleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableViewCell"];
     
     if (cell == nil)
@@ -188,8 +207,10 @@
         cell = [[ScheduleTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"ScheduleTableViewCell"];
     }
     
-    [cell updateCell:[[[Controller getInstance] schedule] objectAtIndex:[indexPath row]]];
     
+    [cell updateCell:show isCurrent:[[show name] isEqualToString:[[[Controller getInstance] currentShow] name]]];
+    
+
     return cell;
 }
 

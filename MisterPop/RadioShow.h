@@ -13,7 +13,7 @@
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *days;
 @property (nonatomic, retain) NSString *time;
-@property (nonatomic, assign) NSNumber *start;
-@property (nonatomic, assign) NSNumber *end;
+@property (nonatomic, assign) int start;
+@property (nonatomic, assign) int end;
 
 @end

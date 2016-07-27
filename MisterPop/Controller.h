@@ -11,8 +11,10 @@
 
 - (void) getRadioSchedule;
 - (void) getBackgroundImages;
+- (void) updateCurrentRadioShow;
 
 @property (nonatomic, retain) NSMutableArray *imagesArray;
 @property (nonatomic, retain) NSMutableArray *schedule;
+@property (nonatomic, retain) RadioShow *currentShow;
 
 @end

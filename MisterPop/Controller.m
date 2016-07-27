@@ -11,6 +11,7 @@ static Controller *sharedInstance = nil;
 
 @synthesize imagesArray;
 @synthesize schedule;
+@synthesize currentShow;
 
 -(id) init
 {
@@ -40,7 +41,6 @@ static Controller *sharedInstance = nil;
     }
     return nil;
 }
-
 
 - (void) getRadioSchedule
 {
@@ -76,14 +76,15 @@ static Controller *sharedInstance = nil;
         [show setName:[shows objectForKey:@"nombre"]];
         [show setDays:[shows objectForKey:@"dias"]];
         [show setTime:[shows objectForKey:@"horario"]];
-        [show setStart:[NSNumber numberWithInt:[[shows objectForKey:@"comienzo"] intValue]]];
-        [show setEnd:[NSNumber numberWithInt:[[shows objectForKey:@"final"] intValue]]];
+        [show setStart:[[shows objectForKey:@"comienzo"] intValue]];
+        [show setEnd:[[shows objectForKey:@"final"] intValue]];
         
         [scheduleArray addObject:show];
         
         RELEASE_SAFE(show);
     }
     
+    NSLog(@"%d", [self getCurrentHour]);
     return [scheduleArray autorelease];
 }
 
@@ -132,4 +133,33 @@ static Controller *sharedInstance = nil;
         [imagesArray addObject:result];
     }
 }
+
+- (Boolean) isDayOfTheWeek
+{
+    CFAbsoluteTime at = CFAbsoluteTimeGetCurrent();
+    CFTimeZoneRef tz = CFTimeZoneCopySystem();
+    int day = CFAbsoluteTimeGetDayOfWeek(at, tz);
+    return  (day > 0 && day < 6);
+}
+
+- (int) getCurrentHour
+{
+    NSDate *date = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:date];
+    return (int)[components hour];
+}
+
+- (void) updateCurrentRadioShow
+{
+    int hour = [self getCurrentHour];
+    for (RadioShow * show in schedule) {
+        if(hour >= [show start] && hour < [show end])
+        {
+            [self setCurrentShow:show];
+            break;
+        }
+    }
+}
+
 @end
