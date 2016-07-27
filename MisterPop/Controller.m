@@ -152,13 +152,23 @@ static Controller *sharedInstance = nil;
 
 - (void) updateCurrentRadioShow
 {
+    Boolean match = FALSE;
     int hour = [self getCurrentHour];
     for (RadioShow * show in schedule) {
         if(hour >= [show start] && hour < [show end])
         {
             [self setCurrentShow:show];
+            //match = TRUE;
             break;
         }
+    }
+    
+    if(!match)
+    {
+        RadioShow * show = [[RadioShow alloc] init];
+        [show setName:@"MisterPop"];
+        [self setCurrentShow:show];
+        RELEASE_SAFE(show);
     }
 }
 

@@ -172,8 +172,7 @@
 - (void) updateCurrentShow
 {
     [[Controller getInstance] updateCurrentRadioShow];
-    [currentShow setText:[NSString stringWithFormat:@"%@\nho", [[[Controller getInstance] currentShow] name]]];
-    [currentShow sizeToFit];
+    [currentShow setText:[[[Controller getInstance] currentShow] name]];
 }
 
 - (void)didReceiveMemoryWarning
