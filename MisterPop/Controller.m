@@ -21,6 +21,13 @@ static Controller *sharedInstance = nil;
     return [super init];
 }
 
+- (void) dealloc
+{
+    RELEASE_SAFE(imagesArray);
+    RELEASE_SAFE(schedule);
+    RELEASE_SAFE(sharedInstance);
+}
+
 + (Controller*) getInstance
 {
     static dispatch_once_t pred;
@@ -78,16 +85,44 @@ static Controller *sharedInstance = nil;
         [show setTime:[shows objectForKey:@"horario"]];
         [show setStart:[[shows objectForKey:@"comienzo"] intValue]];
         [show setEnd:[[shows objectForKey:@"final"] intValue]];
+        [show fillShowDays:[shows objectForKey:@"detalle_dias"]];
         
         [scheduleArray addObject:show];
         
         RELEASE_SAFE(show);
     }
     
-    NSLog(@"%d", [self getCurrentHour]);
     return [scheduleArray autorelease];
 }
 
+- (void) setBackgroundImagesVersion:(int) version
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:version forKey:@"background_version"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (int) getBackgroundImagesVersion
+{
+    return (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"background_version"];
+}
+
+- (void) cacheImages
+{
+    // si no tengo imagenes, van las default y bajo las que hay y aparecen la proxima vez que inicia la app
+    // si no hay conexion, van las default
+    // si tengo, chequeo la version
+    // si es menos o igual, van las que estan en cache
+    // si es mayor, van las que estan en cache y descargo las nuevas y aparecen la proxima vez que inicia la app
+    
+    if(![self checkLocalImages])
+    {
+        [self loadDefaultImages];
+    }
+    else
+    {
+        [self loadLocalImages];
+    }
+}
 
 - (void) getBackgroundImages
 {
@@ -107,23 +142,51 @@ static Controller *sharedInstance = nil;
     {
         NSDictionary *jsonResult = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&jsonError];
         
-        NSDictionary * items = [jsonResult objectForKey:@"images"];
-        int i = 0;
-        for (NSDictionary * images in items)
+        int version = [[jsonResult objectForKey:@"version"] intValue];
+        if(version <= [self getBackgroundImagesVersion])
         {
-            NSString * imageName = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"image%d.%@", i++, [[images objectForKey:@"path"] pathExtension]]];
-            
-            if(![[NSFileManager defaultManager] fileExistsAtPath:imageName])
-            {
-                NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[images objectForKey:@"path"]]];
-                [data writeToFile:imageName atomically:TRUE];
-            }
+            [self loadDefaultImages];
         }
-        [self loadImages];
+        
+        
+        
+        [self loadLocalImages];
     }
 }
 
-- (void) loadImages {
+- (void) saveImagesToCache:(NSDictionary *) dict
+{
+    NSDictionary * items = [dict objectForKey:@"images"];
+    int i = 0;
+    for (NSDictionary * images in items)
+    {
+        NSString * imageName = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"image%d.%@", i++, [[images objectForKey:@"path"] pathExtension]]];
+        
+        if(![[NSFileManager defaultManager] fileExistsAtPath:imageName])
+        {
+            NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[images objectForKey:@"path"]]];
+            [data writeToFile:imageName atomically:TRUE];
+        }
+    }
+
+}
+
+- (Boolean) checkLocalImages
+{
+    for(int i=0; i<5; i++)
+    {
+        NSString * localImageName = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"image%d.jpg", i++]];
+        
+        if(![[NSFileManager defaultManager] fileExistsAtPath:localImageName])
+        {
+            return FALSE;
+        }
+    }
+    
+    return TRUE;
+}
+
+- (void) loadLocalImages {
     imagesArray = [[NSMutableArray alloc] init];
     for(int i=0; i<5; i++)
     {
@@ -134,12 +197,17 @@ static Controller *sharedInstance = nil;
     }
 }
 
-- (Boolean) isDayOfTheWeek
+- (int) getDayOfTheWeek
 {
     CFAbsoluteTime at = CFAbsoluteTimeGetCurrent();
     CFTimeZoneRef tz = CFTimeZoneCopySystem();
-    int day = CFAbsoluteTimeGetDayOfWeek(at, tz);
-    return  (day > 0 && day < 6);
+    int day = (int)CFAbsoluteTimeGetDayOfWeek(at, tz);
+    if(day == 7)
+    {
+        return 0;
+    }
+    
+    return day;
 }
 
 - (int) getCurrentHour
@@ -154,12 +222,17 @@ static Controller *sharedInstance = nil;
 {
     Boolean match = FALSE;
     int hour = [self getCurrentHour];
+    int day = [self getDayOfTheWeek];
     for (RadioShow * show in schedule) {
         if(hour >= [show start] && hour < [show end])
         {
-            [self setCurrentShow:show];
-            //match = TRUE;
-            break;
+            NSString *showDay = [NSString stringWithFormat:@"%d", day];
+            if([[show daysArray] containsObject:showDay])
+            {
+                [self setCurrentShow:show];
+                match = TRUE;
+                break;
+            }
         }
     }
     
@@ -171,5 +244,21 @@ static Controller *sharedInstance = nil;
         RELEASE_SAFE(show);
     }
 }
+
+- (NSArray *)loadDefaultImages
+{
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int index = 1; index <= 6; index++)
+    {
+        NSString *imageName = [NSString stringWithFormat:@"def_img_%d", index];
+        
+        UIImage *image = [UIImage imageNamed:imageName];
+        
+        [array addObject:image];
+    }
+    
+    return array;
+}
+
 
 @end

@@ -427,8 +427,8 @@ static void ASReadStreamCallBack
 		}
 
         if (self.shouldDisplayAlertOnError)
-            [self presentAlertWithTitle:NSLocalizedStringFromTable(@"File Error", @"Errors", nil)
-                                message:NSLocalizedStringFromTable(@"Unable to configure network read stream.", @"Errors", nil)];
+            [self presentAlertWithTitle:NSLocalizedStringFromTable(@"Error", @"Error", nil)
+                                message:NSLocalizedStringFromTable(@"Error al conectar con el servidor.\n Intentá nuevamente en unos minutos!", @"Error", nil)];
 	}
 }
 

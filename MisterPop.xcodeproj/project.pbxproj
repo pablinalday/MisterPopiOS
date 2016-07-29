@@ -25,6 +25,7 @@
 		6E6F8C5F1D47DD6B0021C4A8 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F8C5E1D47DD6B0021C4A8 /* Controller.m */; };
 		6E6F8C631D47E1220021C4A8 /* RadioShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F8C621D47E1220021C4A8 /* RadioShow.m */; };
 		6EF1EBDC1D49256F002A4524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EF1EBDB1D49256F002A4524 /* Assets.xcassets */; };
+		6EF1EBDE1D4BA223002A4524 /* ScheduleTableViewCellLarge.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EF1EBDD1D4BA223002A4524 /* ScheduleTableViewCellLarge.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		6E6F8C611D47E1220021C4A8 /* RadioShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioShow.h; sourceTree = "<group>"; };
 		6E6F8C621D47E1220021C4A8 /* RadioShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioShow.m; sourceTree = "<group>"; };
 		6EF1EBDB1D49256F002A4524 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6EF1EBDD1D4BA223002A4524 /* ScheduleTableViewCellLarge.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCellLarge.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				6E6F8C521D46609C0021C4A8 /* ScheduleTableViewCell.h */,
 				6E6F8C531D46609C0021C4A8 /* ScheduleTableViewCell.m */,
 				6E6F8C541D46609C0021C4A8 /* ScheduleTableViewCell.xib */,
+				6EF1EBDD1D4BA223002A4524 /* ScheduleTableViewCellLarge.xib */,
 				6E6F8C571D47DBA60021C4A8 /* SplashVC.h */,
 				6E6F8C581D47DBA60021C4A8 /* SplashVC.m */,
 				6E6F8C591D47DBA60021C4A8 /* SplashVC.xib */,
@@ -240,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E6F8C5B1D47DBA60021C4A8 /* SplashVC.xib in Resources */,
+				6EF1EBDE1D4BA223002A4524 /* ScheduleTableViewCellLarge.xib in Resources */,
 				6E6F8C561D46609C0021C4A8 /* ScheduleTableViewCell.xib in Resources */,
 				6EF1EBDC1D49256F002A4524 /* Assets.xcassets in Resources */,
 				6E05C07A1D372F900062D0E5 /* PlayerVC.xib in Resources */,

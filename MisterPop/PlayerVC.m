@@ -110,6 +110,7 @@
     
     NSURL *url = [NSURL URLWithString:escapedValue];
     streamer = [[AudioStreamer alloc] initWithURL:url];
+    [streamer setShouldDisplayAlertOnError:TRUE];
 }
 
 - (void)playbackStateChanged:(NSNotification *)aNotification
@@ -129,6 +130,7 @@
     }
     else if ([streamer isIdle])
     {
+        [self stopStreamer];
         [self destroyStreamer];
         [playbackStatusLbl setText:@"STOPPED"];
         [self updateCurrentShow];
@@ -203,7 +205,10 @@
     
     if (cell == nil)
     {
-        cell = [[ScheduleTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"ScheduleTableViewCell"];
+        if([[show name] containsString:@"\n"])
+        cell = [[ScheduleTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"ScheduleTableViewCellLarge"];
+        else
+            cell = [[ScheduleTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"ScheduleTableViewCell"];
     }
     
     
@@ -226,7 +231,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60.0;
+    RadioShow * show = [[[Controller getInstance] schedule] objectAtIndex:[indexPath row]];
+    if([[show name] containsString:@"\n"])
+        return 75.0;
+    else
+        return 60.0;
 }
 
 //------------------------------------------------------------------------------

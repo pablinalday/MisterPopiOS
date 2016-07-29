@@ -15,5 +15,8 @@
 @property (nonatomic, retain) NSString *time;
 @property (nonatomic, assign) int start;
 @property (nonatomic, assign) int end;
+@property (nonatomic, retain) NSArray * daysArray;
+
+- (void) fillShowDays:(NSString*) daysString;
 
 @end

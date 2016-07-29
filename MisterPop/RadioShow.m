@@ -15,5 +15,17 @@
 @synthesize time;
 @synthesize start;
 @synthesize end;
+@synthesize daysArray;
+
+- (void) fillShowDays:(NSString*) daysString
+{
+    daysArray = [[NSArray alloc] initWithArray:[daysString componentsSeparatedByString:@", "]];
+}
+
+- (void) dealloc
+{
+    RELEASE_SAFE(daysArray);
+    [super dealloc];
+}
 
 @end

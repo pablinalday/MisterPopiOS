@@ -23,7 +23,7 @@
     
     if (self)
     {
-        NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:@"ScheduleTableViewCell" owner:self options:nil];
+        NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:reuseIdentifier owner:self options:nil];
         
         if ([arrayOfViews count] < 1)
         {
@@ -55,15 +55,17 @@
    
     NSMutableAttributedString *finalAttributedString = [[NSMutableAttributedString alloc] initWithAttributedString:normalText];
     
+    RELEASE_SAFE(normalText);
+    
     if(isCurrent)
     {
          NSAttributedString *highlightedText = [[NSAttributedString alloc] initWithString:@"  LIVE" attributes:liveAttributes];
         [finalAttributedString appendAttributedString:highlightedText];
-        
+        RELEASE_SAFE(highlightedText);
         [start setTextColor:liveColor];
     }
     [name setAttributedText:finalAttributedString];
-    
+    RELEASE_SAFE(finalAttributedString);
     [days setText:[show days]];
     [time setText:[show time]];
     [start setText:[NSString stringWithFormat:@"%d:00", [show start]]];
