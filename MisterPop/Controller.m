@@ -12,6 +12,7 @@ static Controller *sharedInstance = nil;
 @synthesize imagesArray;
 @synthesize schedule;
 @synthesize currentShow;
+@synthesize shouldLoadNewImages;
 
 -(id) init
 {
@@ -26,6 +27,7 @@ static Controller *sharedInstance = nil;
     RELEASE_SAFE(imagesArray);
     RELEASE_SAFE(schedule);
     RELEASE_SAFE(sharedInstance);
+    [super dealloc];
 }
 
 + (Controller*) getInstance
@@ -114,17 +116,17 @@ static Controller *sharedInstance = nil;
     // si es menos o igual, van las que estan en cache
     // si es mayor, van las que estan en cache y descargo las nuevas y aparecen la proxima vez que inicia la app
     
-    if(![self checkLocalImages])
-    {
-        [self loadDefaultImages];
-    }
-    else
-    {
-        [self loadLocalImages];
+    shouldLoadNewImages = FALSE;
+    [self loadDefaultImages];
+    if(![self checkLocalImages]) {
+        //TODO: sacar esto cuando esten las imagenes nuevas
+        //shouldLoadNewImages = TRUE;
+    } else {
+        [self setShouldLoadNewImages];
     }
 }
 
-- (void) getBackgroundImages
+- (void) setShouldLoadNewImages
 {
     NSError* error = nil;
     
@@ -145,12 +147,35 @@ static Controller *sharedInstance = nil;
         int version = [[jsonResult objectForKey:@"version"] intValue];
         if(version <= [self getBackgroundImagesVersion])
         {
-            [self loadDefaultImages];
+            shouldLoadNewImages = FALSE;
+            [self loadLocalImages];
+        } else {
+            shouldLoadNewImages = TRUE;
+            [self setBackgroundImagesVersion:version];
         }
+    }
+
+}
+
+- (void) getBackgroundImages
+{
+    NSError* error = nil;
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:[[[NSURL alloc] initWithString:MISTER_POP_BACKGROUND_IMG_URL] autorelease] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:20];
+    
+    NSData* jsonData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:nil error:&error];
+    
+    if(jsonData == nil || error != nil)
+    {
+        return;
+    }
+    
+    NSError *jsonError;
+    if(jsonData != nil)
+    {
+        NSDictionary *jsonResult = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&jsonError];
         
-        
-        
-        [self loadLocalImages];
+        [self saveImagesToCache:jsonResult];
     }
 }
 
@@ -162,20 +187,17 @@ static Controller *sharedInstance = nil;
     {
         NSString * imageName = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"image%d.%@", i++, [[images objectForKey:@"path"] pathExtension]]];
         
-        if(![[NSFileManager defaultManager] fileExistsAtPath:imageName])
-        {
-            NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[images objectForKey:@"path"]]];
+        NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[images objectForKey:@"path"]]];
             [data writeToFile:imageName atomically:TRUE];
-        }
     }
 
 }
 
 - (Boolean) checkLocalImages
 {
-    for(int i=0; i<5; i++)
+    for(int i=1; i<=10; i++)
     {
-        NSString * localImageName = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"image%d.jpg", i++]];
+        NSString * localImageName = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"image%d.png", i++]];
         
         if(![[NSFileManager defaultManager] fileExistsAtPath:localImageName])
         {
@@ -186,11 +208,13 @@ static Controller *sharedInstance = nil;
     return TRUE;
 }
 
-- (void) loadLocalImages {
+- (void) loadLocalImages
+{
+    RELEASE_SAFE(imagesArray);
     imagesArray = [[NSMutableArray alloc] init];
-    for(int i=0; i<5; i++)
+    for(int i=1; i<=10; i++)
     {
-        NSString * imageName = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"image%d.%@", i, @"jpg"]];
+        NSString * imageName = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"image%d.%@", i, @"png"]];
         
         UIImage * result = [UIImage imageWithContentsOfFile:imageName];
         [imagesArray addObject:result];
@@ -204,10 +228,10 @@ static Controller *sharedInstance = nil;
     int day = (int)CFAbsoluteTimeGetDayOfWeek(at, tz);
     if(day == 7)
     {
-        return 0;
+        return 1;
     }
     
-    return day;
+    return day+1;
 }
 
 - (int) getCurrentHour
@@ -223,11 +247,25 @@ static Controller *sharedInstance = nil;
     Boolean match = FALSE;
     int hour = [self getCurrentHour];
     int day = [self getDayOfTheWeek];
+    
+    //falta chequear que pasa si el final es mas chico que el comienzo end < start
+    
     for (RadioShow * show in schedule) {
         if(hour >= [show start] && hour < [show end])
         {
             NSString *showDay = [NSString stringWithFormat:@"%d", day];
             if([[show daysArray] containsObject:showDay])
+            {
+                [self setCurrentShow:show];
+                match = TRUE;
+                break;
+            }
+        }
+        
+        if([show end] < [show start])
+        {
+            NSString *showDay = [NSString stringWithFormat:@"%d", day];
+            if((hour >= [show start] && hour <= 24 && [[show daysArray] containsObject:showDay]) || (hour >= 0 && hour < [show end] && ([[show daysArray] containsObject:showDay])))
             {
                 [self setCurrentShow:show];
                 match = TRUE;
@@ -245,19 +283,18 @@ static Controller *sharedInstance = nil;
     }
 }
 
-- (NSArray *)loadDefaultImages
+- (void)loadDefaultImages
 {
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    for (int index = 1; index <= 6; index++)
+    RELEASE_SAFE(imagesArray);
+    imagesArray = [[NSMutableArray alloc] init];
+    for (int index = 1; index <= 10; index++)
     {
-        NSString *imageName = [NSString stringWithFormat:@"def_img_%d", index];
+        NSString *imageName = [NSString stringWithFormat:@"def_background_%d", index];
         
         UIImage *image = [UIImage imageNamed:imageName];
         
-        [array addObject:image];
+        [imagesArray addObject:image];
     }
-    
-    return array;
 }
 
 

@@ -34,7 +34,7 @@
     [super viewDidLoad];
     
     [backgroundIV setAnimationImages:[[Controller getInstance] imagesArray]];
-    [backgroundIV setAnimationDuration:5];
+    [backgroundIV setAnimationDuration:15];
     [backgroundIV setAnimationRepeatCount:0];
     [backgroundIV startAnimating];
     
@@ -67,6 +67,14 @@
     [closeButton addTarget:self action:@selector(hideSchedule) forControlEvents:UIControlEventTouchUpInside];
     
     [self updateCurrentShow];
+    
+    if([[Controller getInstance] shouldLoadNewImages])
+    {
+        [self downloadNewBackgrounds];
+    }
+    
+    [self playStreamer];
+    
 }
 
 - (void) showSchedule
@@ -212,7 +220,7 @@
     }
     
     
-    [cell updateCell:show isCurrent:[[show name] isEqualToString:[[[Controller getInstance] currentShow] name]]];
+    [cell updateCell:show isCurrent:[[show name] isEqualToString:[[[Controller getInstance] currentShow] name]] && [[show time] isEqualToString:[[[Controller getInstance] currentShow] time]] && [[show days] isEqualToString:[[[Controller getInstance] currentShow] days]]];
     
 
     return cell;
@@ -245,6 +253,26 @@
 {
     [self destroyStreamer];
     [super dealloc];
+}
+
+- (void) downloadNewBackgrounds
+{
+    dispatch_async( dispatch_get_main_queue(), ^{
+        dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            [[Controller getInstance] getBackgroundImages];
+            NSLog(@"downloading images");
+            
+            dispatch_async( dispatch_get_main_queue(), ^{
+                [[Controller getInstance] loadLocalImages];
+                [backgroundIV setAnimationImages:[[Controller getInstance] imagesArray]];
+                [backgroundIV setAnimationDuration:5];
+                [backgroundIV setAnimationRepeatCount:0];
+                [backgroundIV startAnimating];
+                NSLog(@"done");
+            });
+        });
+    });
 }
 
 @end

@@ -18,6 +18,9 @@
 		6E05C08B1D3736620062D0E5 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05C08A1D3736620062D0E5 /* AudioStreamer.m */; };
 		6E18ED6F1D3EE70400459BC2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E18ED6D1D3EE70400459BC2 /* Fabric.framework */; };
 		6E18ED701D3EE70400459BC2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E18ED6E1D3EE70400459BC2 /* Crashlytics.framework */; };
+		6E5A06E11D566B3D009CB503 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E5A06DF1D566B3D009CB503 /* AVFoundation.framework */; };
+		6E5A06E21D566B3D009CB503 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E5A06E01D566B3D009CB503 /* AVKit.framework */; };
+		6E5A06E41D566D34009CB503 /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6E5A06E31D566D34009CB503 /* splash.mp4 */; };
 		6E6F8C551D46609C0021C4A8 /* ScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F8C531D46609C0021C4A8 /* ScheduleTableViewCell.m */; };
 		6E6F8C561D46609C0021C4A8 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E6F8C541D46609C0021C4A8 /* ScheduleTableViewCell.xib */; };
 		6E6F8C5A1D47DBA60021C4A8 /* SplashVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F8C581D47DBA60021C4A8 /* SplashVC.m */; };
@@ -47,6 +50,9 @@
 		6E05C08A1D3736620062D0E5 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		6E18ED6D1D3EE70400459BC2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		6E18ED6E1D3EE70400459BC2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		6E5A06DF1D566B3D009CB503 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6E5A06E01D566B3D009CB503 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		6E5A06E31D566D34009CB503 /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = splash.mp4; path = MisterPop/splash.mp4; sourceTree = "<group>"; };
 		6E6F8C521D46609C0021C4A8 /* ScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTableViewCell.h; sourceTree = "<group>"; };
 		6E6F8C531D46609C0021C4A8 /* ScheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTableViewCell.m; sourceTree = "<group>"; };
 		6E6F8C541D46609C0021C4A8 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
@@ -66,6 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E5A06E11D566B3D009CB503 /* AVFoundation.framework in Frameworks */,
+				6E5A06E21D566B3D009CB503 /* AVKit.framework in Frameworks */,
 				6E05C0871D3735C20062D0E5 /* MediaPlayer.framework in Frameworks */,
 				6E18ED6F1D3EE70400459BC2 /* Fabric.framework in Frameworks */,
 				6E05C0851D3735B80062D0E5 /* AudioToolbox.framework in Frameworks */,
@@ -81,6 +89,7 @@
 		6E05C0531D372E6F0062D0E5 = {
 			isa = PBXGroup;
 			children = (
+				6E5A06E31D566D34009CB503 /* splash.mp4 */,
 				6E05C05E1D372E6F0062D0E5 /* MisterPop */,
 				6E05C05D1D372E6F0062D0E5 /* Products */,
 			);
@@ -150,6 +159,8 @@
 		6E05C0881D3735D60062D0E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E5A06DF1D566B3D009CB503 /* AVFoundation.framework */,
+				6E5A06E01D566B3D009CB503 /* AVKit.framework */,
 				6E18ED6D1D3EE70400459BC2 /* Fabric.framework */,
 				6E18ED6E1D3EE70400459BC2 /* Crashlytics.framework */,
 				6E05C0861D3735C20062D0E5 /* MediaPlayer.framework */,
@@ -245,6 +256,7 @@
 				6E6F8C5B1D47DBA60021C4A8 /* SplashVC.xib in Resources */,
 				6EF1EBDE1D4BA223002A4524 /* ScheduleTableViewCellLarge.xib in Resources */,
 				6E6F8C561D46609C0021C4A8 /* ScheduleTableViewCell.xib in Resources */,
+				6E5A06E41D566D34009CB503 /* splash.mp4 in Resources */,
 				6EF1EBDC1D49256F002A4524 /* Assets.xcassets in Resources */,
 				6E05C07A1D372F900062D0E5 /* PlayerVC.xib in Resources */,
 			);

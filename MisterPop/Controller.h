@@ -12,9 +12,12 @@
 - (void) getRadioSchedule;
 - (void) getBackgroundImages;
 - (void) updateCurrentRadioShow;
+- (void) loadLocalImages;
+- (void) cacheImages;
 
 @property (nonatomic, retain) NSMutableArray *imagesArray;
 @property (nonatomic, retain) NSMutableArray *schedule;
 @property (nonatomic, retain) RadioShow *currentShow;
+@property (nonatomic, assign) bool shouldLoadNewImages;
 
 @end
