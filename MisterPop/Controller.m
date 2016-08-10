@@ -120,7 +120,7 @@ static Controller *sharedInstance = nil;
     [self loadDefaultImages];
     if(![self checkLocalImages]) {
         //TODO: sacar esto cuando esten las imagenes nuevas
-        //shouldLoadNewImages = TRUE;
+        shouldLoadNewImages = TRUE;
     } else {
         [self setShouldLoadNewImages];
     }
@@ -182,13 +182,15 @@ static Controller *sharedInstance = nil;
 - (void) saveImagesToCache:(NSDictionary *) dict
 {
     NSDictionary * items = [dict objectForKey:@"images"];
-    int i = 0;
+    int i = 1;
     for (NSDictionary * images in items)
     {
         NSString * imageName = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"image%d.%@", i++, [[images objectForKey:@"path"] pathExtension]]];
         
+        NSLog(@"%@", imageName);
+        
         NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[images objectForKey:@"path"]]];
-            [data writeToFile:imageName atomically:TRUE];
+        [data writeToFile:imageName atomically:TRUE];
     }
 
 }

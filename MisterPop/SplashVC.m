@@ -22,7 +22,6 @@ MPMoviePlayerController * moviePlayer;
 @synthesize playerView;
 @synthesize videoDidFinish;
 @synthesize downloadDidFinish;
-@synthesize downloadingLabel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -87,7 +86,6 @@ MPMoviePlayerController * moviePlayer;
 {
     NSLog(@"finish");
     videoDidFinish = TRUE;
-    [downloadingLabel setHidden:FALSE];
     [self performSelector:@selector(shouldGoToNextVC) withObject:nil afterDelay:1];
 }
 

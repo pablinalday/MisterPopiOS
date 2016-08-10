@@ -14,7 +14,6 @@
 
 
 @property (nonatomic, retain) IBOutlet UIView * playerView;
-@property (nonatomic, retain) IBOutlet UILabel * downloadingLabel;
 @property (nonatomic, assign) Boolean videoDidFinish;
 @property (nonatomic, assign) Boolean downloadDidFinish;
 
