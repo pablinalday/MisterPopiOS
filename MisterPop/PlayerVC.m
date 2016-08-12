@@ -257,11 +257,12 @@
 
 - (void) downloadNewBackgrounds
 {
+    NSLog(@"downloading images");
+
     dispatch_async( dispatch_get_main_queue(), ^{
         dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
             [[Controller getInstance] getBackgroundImages];
-            NSLog(@"downloading images");
             
             dispatch_async( dispatch_get_main_queue(), ^{
                 [[Controller getInstance] loadLocalImages];
