@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "PlayerVC.h"
 #import "SplashVC.h"
-#import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
 
@@ -22,8 +21,7 @@
 @synthesize window, navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    [Fabric with:@[[Crashlytics class]]];
+
 
     window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

@@ -16,18 +16,16 @@
 		6E05C0851D3735B80062D0E5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E05C0841D3735B80062D0E5 /* AudioToolbox.framework */; };
 		6E05C0871D3735C20062D0E5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E05C0861D3735C20062D0E5 /* MediaPlayer.framework */; };
 		6E05C08B1D3736620062D0E5 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05C08A1D3736620062D0E5 /* AudioStreamer.m */; };
-		6E18ED6F1D3EE70400459BC2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E18ED6D1D3EE70400459BC2 /* Fabric.framework */; };
-		6E18ED701D3EE70400459BC2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E18ED6E1D3EE70400459BC2 /* Crashlytics.framework */; };
 		6E5A06E11D566B3D009CB503 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E5A06DF1D566B3D009CB503 /* AVFoundation.framework */; };
 		6E5A06E21D566B3D009CB503 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E5A06E01D566B3D009CB503 /* AVKit.framework */; };
 		6E5A06E41D566D34009CB503 /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6E5A06E31D566D34009CB503 /* splash.mp4 */; };
+		6E6DA0021D73826D00FF4D60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E6DA0011D73826D00FF4D60 /* Assets.xcassets */; };
 		6E6F8C551D46609C0021C4A8 /* ScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F8C531D46609C0021C4A8 /* ScheduleTableViewCell.m */; };
 		6E6F8C561D46609C0021C4A8 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E6F8C541D46609C0021C4A8 /* ScheduleTableViewCell.xib */; };
 		6E6F8C5A1D47DBA60021C4A8 /* SplashVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F8C581D47DBA60021C4A8 /* SplashVC.m */; };
 		6E6F8C5B1D47DBA60021C4A8 /* SplashVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E6F8C591D47DBA60021C4A8 /* SplashVC.xib */; };
 		6E6F8C5F1D47DD6B0021C4A8 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F8C5E1D47DD6B0021C4A8 /* Controller.m */; };
 		6E6F8C631D47E1220021C4A8 /* RadioShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F8C621D47E1220021C4A8 /* RadioShow.m */; };
-		6EF1EBDC1D49256F002A4524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EF1EBDB1D49256F002A4524 /* Assets.xcassets */; };
 		6EF1EBDE1D4BA223002A4524 /* ScheduleTableViewCellLarge.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EF1EBDD1D4BA223002A4524 /* ScheduleTableViewCellLarge.xib */; };
 /* End PBXBuildFile section */
 
@@ -48,11 +46,10 @@
 		6E05C0861D3735C20062D0E5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		6E05C0891D3736620062D0E5 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		6E05C08A1D3736620062D0E5 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
-		6E18ED6D1D3EE70400459BC2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
-		6E18ED6E1D3EE70400459BC2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		6E5A06DF1D566B3D009CB503 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6E5A06E01D566B3D009CB503 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		6E5A06E31D566D34009CB503 /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = splash.mp4; path = MisterPop/splash.mp4; sourceTree = "<group>"; };
+		6E6DA0011D73826D00FF4D60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E6F8C521D46609C0021C4A8 /* ScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTableViewCell.h; sourceTree = "<group>"; };
 		6E6F8C531D46609C0021C4A8 /* ScheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTableViewCell.m; sourceTree = "<group>"; };
 		6E6F8C541D46609C0021C4A8 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
@@ -63,7 +60,6 @@
 		6E6F8C5E1D47DD6B0021C4A8 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
 		6E6F8C611D47E1220021C4A8 /* RadioShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioShow.h; sourceTree = "<group>"; };
 		6E6F8C621D47E1220021C4A8 /* RadioShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioShow.m; sourceTree = "<group>"; };
-		6EF1EBDB1D49256F002A4524 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6EF1EBDD1D4BA223002A4524 /* ScheduleTableViewCellLarge.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCellLarge.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,10 +71,8 @@
 				6E5A06E11D566B3D009CB503 /* AVFoundation.framework in Frameworks */,
 				6E5A06E21D566B3D009CB503 /* AVKit.framework in Frameworks */,
 				6E05C0871D3735C20062D0E5 /* MediaPlayer.framework in Frameworks */,
-				6E18ED6F1D3EE70400459BC2 /* Fabric.framework in Frameworks */,
 				6E05C0851D3735B80062D0E5 /* AudioToolbox.framework in Frameworks */,
 				6E05C0831D3735AF0062D0E5 /* QuartzCore.framework in Frameworks */,
-				6E18ED701D3EE70400459BC2 /* Crashlytics.framework in Frameworks */,
 				6E05C0811D3735A50062D0E5 /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,7 +106,7 @@
 				6E05C07D1D37302B0062D0E5 /* player */,
 				6E05C0621D372E6F0062D0E5 /* AppDelegate.h */,
 				6E05C0631D372E6F0062D0E5 /* AppDelegate.m */,
-				6EF1EBDB1D49256F002A4524 /* Assets.xcassets */,
+				6E6DA0011D73826D00FF4D60 /* Assets.xcassets */,
 				6E05C05F1D372E6F0062D0E5 /* Supporting Files */,
 				6E05C0881D3735D60062D0E5 /* Frameworks */,
 			);
@@ -161,8 +155,6 @@
 			children = (
 				6E5A06DF1D566B3D009CB503 /* AVFoundation.framework */,
 				6E5A06E01D566B3D009CB503 /* AVKit.framework */,
-				6E18ED6D1D3EE70400459BC2 /* Fabric.framework */,
-				6E18ED6E1D3EE70400459BC2 /* Crashlytics.framework */,
 				6E05C0861D3735C20062D0E5 /* MediaPlayer.framework */,
 				6E05C0841D3735B80062D0E5 /* AudioToolbox.framework */,
 				6E05C0821D3735AF0062D0E5 /* QuartzCore.framework */,
@@ -221,7 +213,7 @@
 				TargetAttributes = {
 					6E05C05B1D372E6F0062D0E5 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = G9G85M8U9S;
+						DevelopmentTeam = PN954YZ7TE;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -257,7 +249,7 @@
 				6EF1EBDE1D4BA223002A4524 /* ScheduleTableViewCellLarge.xib in Resources */,
 				6E6F8C561D46609C0021C4A8 /* ScheduleTableViewCell.xib in Resources */,
 				6E5A06E41D566D34009CB503 /* splash.mp4 in Resources */,
-				6EF1EBDC1D49256F002A4524 /* Assets.xcassets in Resources */,
+				6E6DA0021D73826D00FF4D60 /* Assets.xcassets in Resources */,
 				6E05C07A1D372F900062D0E5 /* PlayerVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,8 +309,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Emanuel Ferreyra (G9G85M8U9S)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Emanuel Ferreyra (G9G85M8U9S)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -362,8 +354,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Emanuel Ferreyra (G9G85M8U9S)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Emanuel Ferreyra (G9G85M8U9S)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -387,7 +379,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Emanuel Ferreyra (G9G85M8U9S)";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -395,8 +389,9 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MisterPop-Prefix.pch";
 				INFOPLIST_FILE = MisterPop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.misterpop.MisterPop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meroli.misterpop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -404,7 +399,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Emanuel Ferreyra (G9G85M8U9S)";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -412,8 +409,9 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MisterPop-Prefix.pch";
 				INFOPLIST_FILE = MisterPop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.misterpop.MisterPop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meroli.misterpop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
